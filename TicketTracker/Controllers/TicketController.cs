@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TicketTracker.Models;
 
 namespace TicketTracker.Controllers
 {
@@ -19,6 +20,8 @@ namespace TicketTracker.Controllers
         [Route("/Adding")]
         public IActionResult AddTicket(string issue, string details)
         {
+            Ticket newTicket = new Ticket(issue, details);
+            
             //passing form details into View("Home")
             ViewBag.Issue = issue;
             ViewBag.Details= details;   
