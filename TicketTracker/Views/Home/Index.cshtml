@@ -10,20 +10,28 @@
 </div>
 
 
-<h1>List of tickets</h1>
 
-<table class="table table-light">
-    <tr>
-        <th>Date and Time</th>
-        <th>Issue</th>
-        <th>Details</th>
-    </tr>
-    <tr>
-        <td>Date and Time place holder</td>
-        <td>@ViewBag.Issue</td>
-        <td>@ViewBag.Details</td>
-        <td>  
-            <input type="submit" value="View Ticket"/>
-        </td>
-    </tr>
-</table>
+<h1>List of tickets</h1>
+@if (ViewBag.tickets == null)
+{
+    <p>No tickets!</p>
+}
+else
+{
+    <table class="table table-light">
+        <tr>
+            <th>Date and Time</th>
+            <th>Issue</th>
+            <th>Details</th>
+        </tr>
+        
+            @foreach(Ticket ticket in ViewBag.tickets)
+            {
+                <tr>
+            <td>@ticket.Issue</td>
+            <td>@ticket.Details</td>
+            </tr>
+            }
+       
+    </table>
+}

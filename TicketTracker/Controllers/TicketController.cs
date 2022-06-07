@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TicketTracker.Data;
 using TicketTracker.Models;
 
 namespace TicketTracker.Controllers
@@ -21,10 +22,11 @@ namespace TicketTracker.Controllers
         public IActionResult AddTicket(string issue, string details)
         {
             Ticket newTicket = new Ticket(issue, details);
-            
-            //passing form details into View("Home")
-            ViewBag.Issue = issue;
-            ViewBag.Details= details;   
+            TicketData.Add(newTicket);
+
+            ViewBag.tickets = TicketData.tickets; 
+
+
             return View("Index");
         }
 
