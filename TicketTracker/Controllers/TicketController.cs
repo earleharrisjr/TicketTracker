@@ -3,6 +3,7 @@ using System.Linq;
 using TicketTracker.Data;
 using TicketTracker.Models;
 using TicketTracker.ViewModels;
+using System;
 
 namespace TicketTracker.Controllers
 {
@@ -28,11 +29,6 @@ namespace TicketTracker.Controllers
             return View("AddTicketForm");
         }
 
-        [Route("/ViewTicket")]
-        public IActionResult ViewTicket()
-        {
-            return View("ViewTicket");
-        }
 
 
         //handle post request that is getting sent by the form
@@ -55,6 +51,14 @@ namespace TicketTracker.Controllers
 
 
             return Redirect("Ticket/Index");
+        }
+
+        //trying this for viewing ticket
+        public IActionResult ViewTicket(int id)
+        {
+            Console.WriteLine("this is the ID RIGHT HERE!!!"+ id);
+            var selectedTicket = context.Tickets.Find(id);
+            return View(selectedTicket);
         }
 
 

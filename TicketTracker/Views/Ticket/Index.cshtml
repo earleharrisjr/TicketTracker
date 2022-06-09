@@ -2,6 +2,9 @@
     ViewData["Title"] = "Ticket List";
 }
 
+
+
+
 <div class="text-center">
     <h1 class="display-4">Ticket Tracker</h1>
     <p><a asp-controller="Ticket" asp-action="AddTicketForm">Add a new ticket</a></p>
@@ -18,6 +21,7 @@ else
 {
     <table class="table table-light">
         <tr>
+            <th>Id</th>
             <th>Date and Time</th>
             <th>Issue</th>
             <th>Details</th>
@@ -26,11 +30,13 @@ else
             @foreach(Ticket ticket in ViewBag.tickets)
             {
                 <tr>
+                    <td>@ticket.Id</td>
                     <td>@ticket.GetDate</td>
                     <td>@ticket.Issue</td>
                     <td>@ticket.Details</td>
 
-                    <td> <p><a asp-controller="Ticket" asp-action="ViewTicket">View Ticket</a></p>  </td>
+                    
+                    <td><a asp-controller="Ticket" asp-action="ViewTicket" asp-route-id="@ticket.Id">Select Ticket</a></td>
                 </tr>
             }
        
