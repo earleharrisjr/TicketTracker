@@ -9,6 +9,9 @@ namespace TicketTracker.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.tickets = TicketData.tickets;
+
+
             return View();
         }
 
@@ -42,7 +45,7 @@ namespace TicketTracker.Controllers
             ViewBag.tickets = TicketData.tickets; 
 
 
-            return View("Index");
+            return Redirect("Ticket/Index");
         }
 
 

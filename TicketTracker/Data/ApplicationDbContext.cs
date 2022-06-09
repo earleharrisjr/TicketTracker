@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TicketTracker.Models;
 
 namespace TicketTracker.Data
 {
@@ -13,4 +14,12 @@ namespace TicketTracker.Data
         {
         }
     }
+
+    public class TicketDbContext : DbContext
+    {
+        public DbSet<Ticket> Tickets { get; set; }
+
+        public TicketDbContext(DbContextOptions<TicketDbContext> options) : base(options) { }
+    }
 }
+

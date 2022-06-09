@@ -7,7 +7,7 @@
 
 
 <h1>Add New Ticket</h1>
-<form method="post" action="/adding">
+<form aspcontroller="Ticket" asp-action="AddTicket" method="post">
 
     <label asp-for="Issue"> Issue: 
         <input type="text" asp-for="Issue" />

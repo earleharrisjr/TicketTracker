@@ -5,11 +5,11 @@ namespace TicketTracker.ViewModels
 {
     public class AddTicketFormViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Issue cannot be blank")]
         public string Issue { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Details cannot be blank")]
         public string Details { get; set; }
-        [Required(ErrorMessage = "Date and time required")]
+        [Required(ErrorMessage = "Date/Time must be selected")]
         public DateTime GetDate { get; set; }
     }
 }
