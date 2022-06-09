@@ -13,13 +13,9 @@ namespace TicketTracker.Data
             : base(options)
         {
         }
-    }
 
-    public class TicketDbContext : DbContext
-    {
         public DbSet<Ticket> Tickets { get; set; }
 
-        public TicketDbContext(DbContextOptions<TicketDbContext> options) : base(options) { }
     }
 }
 

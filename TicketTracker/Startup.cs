@@ -33,8 +33,6 @@ namespace TicketTracker
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-            services.AddDbContext<TicketDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
         }
 
