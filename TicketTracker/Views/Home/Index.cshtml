@@ -28,10 +28,11 @@ else
             @foreach(Ticket ticket in ViewBag.tickets)
             {
                 <tr>
-                    <td>Date and Time placeholder</td>
+                    <td>@ticket.GetDate</td>
                     <td>@ticket.Issue</td>
                     <td>@ticket.Details</td>
-                    <td> <input type="submit" value="View Ticket Place Holder"/>  </td>
+
+                    <td> <p><a asp-controller="Ticket" asp-action="ViewTicket">View Ticket</a></p>  </td>
                 </tr>
             }
        
