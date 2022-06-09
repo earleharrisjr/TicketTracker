@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using TicketTracker.Data;
 using TicketTracker.Models;
 using TicketTracker.ViewModels;
@@ -7,9 +8,15 @@ namespace TicketTracker.Controllers
 {
     public class TicketController : Controller
     {
+        private ApplicationDbContext context;
+        public TicketController(ApplicationDbContext applicationDbContext)
+        {
+            context = applicationDbContext;
+        }
+
         public IActionResult Index()
         {
-            ViewBag.tickets = TicketData.tickets;
+            ViewBag.tickets = context.Tickets.ToList();
 
 
             return View();
@@ -42,7 +49,9 @@ namespace TicketTracker.Controllers
             }
             Ticket newTicket = new Ticket(viewModel.Issue, viewModel.Details, viewModel.GetDate);
             TicketData.Add(newTicket);
-            ViewBag.tickets = TicketData.tickets; 
+            //ViewBag.tickets = TicketData.tickets; 
+            context.Tickets.Add(newTicket);
+            context.SaveChanges();
 
 
             return Redirect("Ticket/Index");
