@@ -56,11 +56,27 @@ namespace TicketTracker.Controllers
         //trying this for viewing ticket
         public IActionResult ViewTicket(int id)
         {
-            Console.WriteLine("this is the ID RIGHT HERE!!!"+ id);
+           // Console.WriteLine("this is the ID RIGHT HERE!!!"+ id);
             var selectedTicket = context.Tickets.Find(id);
             return View(selectedTicket);
         }
 
+
+        public IActionResult Edit(int id)
+        {
+            var selectedTicket = context.Tickets.Find(id);
+            return View(selectedTicket);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Ticket ticket)
+        {
+            var selectedTicket = context.Tickets.Find(ticket.Id);
+            selectedTicket.Issue = ticket.Issue;
+            selectedTicket.Details = ticket.Details;
+            context.SaveChanges();
+            return RedirectToAction("index");
+        }
 
     }
 }
