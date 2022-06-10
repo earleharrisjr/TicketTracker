@@ -78,5 +78,20 @@ namespace TicketTracker.Controllers
             return RedirectToAction("index");
         }
 
+
+        public IActionResult Delete(int id)
+        {
+            var selectedTicket = context.Tickets.Find(id);
+            return View(selectedTicket);
+        }
+        [HttpPost]
+        public IActionResult Delete(Ticket ticket)
+        {
+            var selectedTicket = context.Tickets.Find(ticket.Id);
+            context.Tickets.Remove(selectedTicket);
+            context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
     }
 }
