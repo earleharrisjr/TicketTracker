@@ -10,6 +10,7 @@ namespace TicketTracker.Models
         public string Details { get; set; }
         public DateTime GetDate { get; set; }
 
+
         public Ticket() { }
         public Ticket(string issue, string details, DateTime getdate)
         {
