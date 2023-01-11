@@ -9,6 +9,11 @@
 <h1>Add New Ticket</h1>
 <form aspcontroller="Ticket" asp-action="AddTicket" method="post">
 
+    <label asp-for="Name"> Your name: 
+        <input type="text" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </label>
+    <br/>
     <label asp-for="Issue"> Issue: 
         <input type="text" asp-for="Issue" />
         <span asp-validation-for="Issue"></span>

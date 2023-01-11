@@ -43,7 +43,7 @@ namespace TicketTracker.Controllers
             {
                 return View("AddTicketForm");
             }
-            Ticket newTicket = new Ticket(viewModel.Issue, viewModel.Details, viewModel.GetDate);
+            Ticket newTicket = new Ticket(viewModel.Name, viewModel.Issue, viewModel.Details, viewModel.GetDate);
             TicketData.Add(newTicket);
             //ViewBag.tickets = TicketData.tickets; 
             context.Tickets.Add(newTicket);
@@ -72,6 +72,7 @@ namespace TicketTracker.Controllers
         public IActionResult Edit(Ticket ticket)
         {
             var selectedTicket = context.Tickets.Find(ticket.Id);
+            selectedTicket.Name = ticket.Name;
             selectedTicket.Issue = ticket.Issue;
             selectedTicket.Details = ticket.Details;
             context.SaveChanges();
