@@ -3,7 +3,8 @@
 }
 
 
-
+@if (User.Identity.IsAuthenticated)
+{
 <div class="text-center">
     <h1 class="display-4">Ticket Tracker</h1>
     <p><a asp-controller="Ticket" asp-action="AddTicketForm">Add a new ticket</a></p>
@@ -13,7 +14,12 @@
 <div class="text-center">
     <p><a asp-controller="Ticket" asp-action="Index">View all tickets</a></p>
 </div>
-
-
+}
+else
+{
+    <div class="text-center">
+        <p>Please log in to submit and view tickets.</p>
+    </div>
+}
 
 
