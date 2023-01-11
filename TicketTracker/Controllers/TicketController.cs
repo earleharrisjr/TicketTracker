@@ -72,7 +72,6 @@ namespace TicketTracker.Controllers
         public IActionResult Edit(Ticket ticket)
         {
             var selectedTicket = context.Tickets.Find(ticket.Id);
-            selectedTicket.Name = ticket.Name;
             selectedTicket.Issue = ticket.Issue;
             selectedTicket.Details = ticket.Details;
             context.SaveChanges();

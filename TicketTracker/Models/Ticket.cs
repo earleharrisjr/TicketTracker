@@ -25,13 +25,6 @@ namespace TicketTracker.Models
             GetDate = getdate;
            
         }
-
-        public Ticket(string issue, string details, DateTime getDate)
-        {
-            Issue = issue;
-            Details = details;
-            GetDate = getDate;
-        }
     }
 
 }
